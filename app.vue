@@ -230,7 +230,7 @@ export default {
 section {
 
   display: flex;
-  Justify-content: space-between;
+  justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
 }
