@@ -1,9 +1,4 @@
 <script>
-import { AiFillTwitterCircle, AiFillLinkedin, AiFillYoutube } from "react-icons/ai";
-
-import { BsFillMoonStarsFill } from "react-icons/bs";
-
-
 
 export default {
   data() {
@@ -28,9 +23,7 @@ export default {
       <nav class="py-10 mb-12 flex items-start">
         <h1 class="font-burtons text-xl">Developedbyed</h1>
         <ul class="flex items-center">
-          <li>
-            <BsFillMoonStarsFill class="cursor-pointer text-2xl" />
-          </li>
+    
           <li>
             <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-4 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
               href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
@@ -51,11 +44,7 @@ export default {
         <p class="text-md py-5 leading-8  max-w-xl mx-auto md:text-xl">
           Freelancer providing services for programming and design websites. Join me down below and let's get work!
         </p>
-        <div class="text-5xl flex justify-center gap-16 py-3 text-gray-600 dark:text-gray-400">
-          <AiFillTwitterCircle />
-          <AiFillLinkedin />
-          <AiFillYoutube />
-        </div>
+       
         <div
           class="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
           <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" />
