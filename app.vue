@@ -18,7 +18,7 @@ export default {
 </script>
 <template  >
   
-  <main class="flex flex-col items-center w-full h-auto bg-base-300 ">
+  <main class="flex flex-col items-center w-full h-auto bg-base-300 hero min-h-screen" style="background-image: url(https://res.cloudinary.com/dim2wnoej/image/upload/v1691366533/img23_fgz9kf.jpg);">
     <section class="flex flex-col">
       <nav class="py-10 mb-12 flex items-start">
         <h1 class="font-burtons text-xl">Developedbyed</h1>
