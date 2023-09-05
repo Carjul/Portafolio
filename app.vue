@@ -17,15 +17,14 @@ export default {
 };
 </script>
 <template  >
-  
-  <main class="flex flex-col items-center w-full h-auto bg-base-300 hero min-h-screen" style="background-image: url(https://res.cloudinary.com/dim2wnoej/image/upload/v1691366533/img23_fgz9kf.jpg);">
+
+  <main class="flex flex-col items-center w-full h-auto bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full h-screen">
     <section class="flex flex-col">
-      <nav class="py-10 mb-12 flex items-start">
-        <h1 class="font-burtons text-xl">Developedbyed</h1>
+      <nav class="py-10 flex items-start">
+        <h1 class="font-burtons text-xl">Developed byed</h1>
         <ul class="flex items-center">
-    
           <li>
-            <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-4 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
+            <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
               href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
               Resume
             </a>
@@ -33,44 +32,44 @@ export default {
         </ul>
       </nav>
     </section>
-    <section class="pb-5 text-neutral-content">
-      <div class="flex flex-col items-center text-center p-30 py-30">
+    <section class="pb-2 text-neutral-content">
+      <div class="flex flex-col items-center text-center p-10 py-10">
         <h2 class="text-2xl py-2 md:text-3xl">
           Carlos Julian Ramos González
         </h2>
         <h3 class="text-2xl py-2 md:text-3xl">
-          Web Developer full-stack
+          Full-stack Developer
         </h3>
         <p class="text-md py-5 leading-8  max-w-xl mx-auto md:text-xl">
           Freelancer providing services for programming and design websites. Join me down below and let's get work!
         </p>
        
         <div
-          class="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-80 h-80 relative overflow-hidden mt-20 md:h-96 md:w-96">
+          class="mx-auto  rounded-full w-60 h-60  overflow-hidden mt-10 md:h-96 md:w-96">
           <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" />
         </div>
       </div>
   
     </section>
-  
   </main>
-  <br>
-  <h1>Portofolio</h1>
+ 
+  
   <section class="mx-auto pl-20 pr-20">
 
     <br>
-    <p class="text-neutral-content">
+    <p class="text-neutral-content text-xl">
       Since the beginning of my journey as a freelance designer and
       developer, I've done remote work for
-      <span class="text-teal-500"> agencies </span>
-      consulted for <span class="text-teal-500">startups </span>
+      <span class="text-teal-500 text-xl"> agencies </span>
+      consulted for <span class="text-teal-500 text-xl">startups </span>
       and collaborated with talanted people to create digital products
       for both business and consumer use.
+      <p class="text-teal-500 text-xl">
+        I offer from a wide range of services, including brand design,
+        programming and teaching.
+      </p>
     </p>
-    <p>
-      I offer from a wide range of services, including brand design,
-      programming and teaching.
-    </p>
+    
   </section>
 
 
@@ -159,12 +158,10 @@ export default {
     </div>
 
 
-
-
   </section>
 
   <br>
-  <h1>Trabajos</h1>
+  <h1>Projects</h1>
   <br>
 
   <section>
