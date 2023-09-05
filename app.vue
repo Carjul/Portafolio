@@ -14,6 +14,14 @@ export default {
 
     };
   },
+   methods: {
+    cambiarTitulo() {
+      document.title = 'Portafolio'; 
+    }
+  },
+  mounted(){
+    this.cambiarTitulo();
+  }
 };
 </script>
 <template  >
