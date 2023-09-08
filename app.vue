@@ -65,7 +65,7 @@ export default {
   <section class="mx-auto pl-20 pr-20">
 
     <br>
-    <p class="text-neutral-content text-xl">
+  <!--   <p class="text-neutral-content text-xl">
       Since the beginning of my journey as a freelance designer and
       developer, I've done remote work for
       <span class="text-teal-500 text-xl"> agencies </span>
@@ -76,7 +76,7 @@ export default {
         I offer from a wide range of services, including brand design,
         programming and teaching.
       </p>
-    </p>
+    </p> -->
     
   </section>
 
@@ -172,18 +172,62 @@ export default {
   <h1>Projects</h1>
   <br>
 
-  <section>
+  <section class="mx-auto ml-5 mr-5">
     <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <a href="https://gym-mthatwords.vercel.app/" target="_blank"
+            rel="noopener noreferrer">
       <figure><img
           src="https://res.cloudinary.com/dim2wnoej/image/upload/v1668474391/WhatsApp_Image_2022-10-20_at_5.42.28_PM_pfncqb.jpg"
           alt="Shoes" /></figure>
       <div class="card-body">
-        <h2 class="card-title"><a href="https://gym-mthatwords.vercel.app/" target="_blank"
-            rel="noopener noreferrer">Liberfit</a></h2>
+        <h2 class="card-title">Liberfit</h2>
 
         <p>Es una aplicación WEB de administración y gestión de gimnasios en todo su entorno.</p>
 
       </div>
+      </a>
+    </div>
+    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <a href="https://vigilant-fortnight-jw7jvj94rrx3jpr5-3000.app.github.dev/" target="_blank"
+            rel="noopener noreferrer">
+      <figure><img
+          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145563/Captura_nyf9ik.png"
+          alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">Pokedex</h2>
+
+        <p>Es una aplicación WEB en donde puedes encontrar informacion de todos los Pokemons.</p>
+
+      </div>
+      </a>
+    </div>
+    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <a href="https://stack-menv.onrender.com/" target="_blank"
+            rel="noopener noreferrer">
+      <figure><img
+          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura2_rt9y6s.png"
+          alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">Notas</h2>
+
+        <p>Es una aplicación WEB en donde puedes guardar, listar eliminar y actulizar Notas.</p>
+
+      </div>
+      </a>
+    </div>
+    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <a href="https://matricula-udwr.onrender.com/" target="_blank"
+            rel="noopener noreferrer">
+      <figure><img
+          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura3_uano0e.png"
+          alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">Matricula</h2>
+
+        <p>Es una aplicación WEB en donde puedes guardar y arganizar estudiantes para matricular en una escuela.</p>
+
+      </div>
+      </a>
     </div>
   </section>
   <br>
