@@ -188,7 +188,7 @@ export default {
       </a>
     </div>
     <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <a href="https://vigilant-fortnight-jw7jvj94rrx3jpr5-3000.app.github.dev/" target="_blank"
+      <a href="https://pi-pokemon-main-rho.vercel.app/" target="_blank"
             rel="noopener noreferrer">
       <figure><img
           src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145563/Captura_nyf9ik.png"
