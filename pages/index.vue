@@ -11,13 +11,12 @@ export default {
       document.title = this.title; 
     }
   },
-  mounted(){
+  created(){
     this.cambiarTitulo();
-  }
+  } 
 };
 </script>
 <template  >
-
   <main class="flex flex-col items-center w-full h-auto bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full h-screen">
     <section class="flex flex-col">
       <nav class="py-10 flex items-start">
