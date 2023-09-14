@@ -118,7 +118,7 @@ export default {
     </div>
 
     <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/web5.png" alt="Shoes" /></figure>
+      <figure><img src="../assets/img/posgres.png" alt="Shoes" /></figure>
       <div class="card-body">
         <h2 class="card-title">Postgres</h2>
         <p>Es un sistema de gestión de bases de datos relacionales de código abierto con una gran capacidad de ampliación.
