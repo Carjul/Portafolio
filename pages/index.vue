@@ -25,7 +25,7 @@ export default {
         <ul class="flex items-center">
           <li>
             <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
-              href="https://docs.google.com/uc?export=download&id=1H0GMT3wuykHf_EYoak91Pp1Ee_XfGZnD" target="_blank">
+              href="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" target="_blank">
               Resume
             </a>
           </li>
