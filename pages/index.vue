@@ -11,9 +11,10 @@ export default {
       document.title = this.title; 
     }
   },
-  created(){
+  mounted() {
     this.cambiarTitulo();
-  } 
+  },
+
 };
 </script>
 <template  >
