@@ -1,283 +1,174 @@
-<script>
+<script setup>
+    import { ref, onMounted } from 'vue';
 
-export default {
-  data() {
-    return {
-        title: 'Portafolio',    
+    const title = ref('Portafolio');
+    const skills = ref([
+        {
+            title: "Node.js",
+            image: '../assets/img/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e5e7537.0464945815246930703869.png',
+            description: "Es un entorno de ejecución de JavaScript, basado en una arquitectura no bloqueante y manejada por eventos para ayudar a los desarrolladores a crear aplicaciones distribuidas robustas."
+        },
+        {
+            title: "Golang",
+            image: "../assets/img/golang.png",
+            description: "Es un lenguaje de programación concurrente y compilado diseñado para ser eficiente, sencillo y seguro."
+        },
+        {
+            title: "MongoDB",
+            image: "../assets/img/mongodb.png",
+            description: "Es una base de datos NoSQL orientada a documentos, conocida por su flexibilidad y escalabilidad."
+        },
+        {
+            title: "Vue.js",
+            image: "../assets/img/vue.png",
+            description: "Es un framework progresivo de JavaScript utilizado para construir interfaces de usuario y aplicaciones de una sola página."
+        },
+        {
+            title: "Three.js",
+            image: "../assets/img/threejs.png",
+            description: "Es una biblioteca de JavaScript que permite crear y mostrar gráficos 3D en el navegador."
+        },
+        {
+            title: "Pinia",
+            image: "../assets/img/pinia.png",
+            description: "Es un almacén de estado para Vue.js que se utiliza para gestionar el estado de la aplicación de manera más eficiente."
+        }
+    ]);
+
+    const cambiarTitulo = () => {
+        document.title = title.value;
     };
-  },
-   methods: {
-    cambiarTitulo() {
-      document.title = this.title; 
-    }
-  },
-  mounted() {
-    this.cambiarTitulo();
-  },
 
-};
+    onMounted(() => {
+        cambiarTitulo();
+    });
 </script>
-<template  >
-  <main class="flex flex-col items-center w-full h-auto bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full h-screen">
-    <section class="flex flex-col">
-      <nav class="py-10 flex items-start">
-        <h1 class="font-burtons text-xl">Developed byed</h1>
-        <ul class="flex items-center">
-          <li>
-            <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
-              href="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" target="_blank">
-              Resume
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-    <section class="pb-2 text-neutral-content">
-      <div class="flex flex-col items-center text-center p-10 py-10">
-        <h2 class="text-2xl py-2 md:text-3xl">
-          Carlos Julian Ramos González
-        </h2>
-        <h3 class="text-2xl py-2 md:text-3xl">
-          Full-stack Developer
-        </h3>
-        <p class="text-md py-5 leading-8  max-w-xl mx-auto md:text-xl">
-          Freelancer providing services for programming and design websites. Join me down below and let's get work!
-        </p>
-       
-        <div class="mx-auto rounded-full w-60 h-60  overflow-hidden mt-39 md:h-96 md:w-96">
-          <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" />
+
+
+<template>
+    <main class="flex flex-col items-center w-full h-auto bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full h-screen">
+        <section class="flex flex-col">
+            <nav class="py-10 flex items-start">
+                <h1 class="font-burtons text-xl">Developed byed</h1>
+                <ul class="flex items-center">
+                    <li>
+                        <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out" href="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" target="_blank">
+                            Resume
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section class="pb-2 text-neutral-content">
+            <div class="flex flex-col items-center text-center p-10 py-10">
+                <h2 class="text-2xl py-2 md:text-3xl">Carlos Julian Ramos González</h2>
+                <h3 class="text-2xl py-2 md:text-3xl">Full-stack Developer</h3>
+                <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl">Freelancer providing services for programming and design websites. Join me down below and let's get work!</p>
+                <div class="mx-auto rounded-full w-60 h-60 overflow-hidden mt-39 md:h-96 md:w-96">
+                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" alt="Profile Image" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="mx-auto pl-20 pr-20">
+        <h1 class="text-3xl font-bold my-5">Skillset</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div v-for="skill in skills" :key="skill.title" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+                <figure>
+                    <img :src="skill.image" :alt="skill.title" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{{ skill.title }}</h2>
+                    <p>{{ skill.description }}</p>
+                </div>
+            </div>
         </div>
-
-      </div>
-  
     </section>
-  </main>
- 
-  
-  <section class="mx-auto pl-20 pr-20">
 
-    <br>
-  <!--   <p class="text-neutral-content text-xl">
-      Since the beginning of my journey as a freelance designer and
-      developer, I've done remote work for
-      <span class="text-teal-500 text-xl"> agencies </span>
-      consulted for <span class="text-teal-500 text-xl">startups </span>
-      and collaborated with talanted people to create digital products
-      for both business and consumer use.
-      <p class="text-teal-500 text-xl">
-        I offer from a wide range of services, including brand design,
-        programming and teaching.
-      </p>
-    </p> -->
-    
-  </section>
+    <section class="mx-auto pl-20 pr-20">
+        <h1 class="text-3xl font-bold my-5">Projects</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Tarjeta de Proyecto -->
+            <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+                <a href="https://gym-mthatwords.vercel.app/" target="_blank" rel="noopener noreferrer">
+                    <figure>
+                        <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1668474391/WhatsApp_Image_2022-10-20_at_5.42.28_PM_pfncqb.jpg" alt="Liberfit" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">Liberfit</h2>
+                        <p>Es una aplicación WEB de administración y gestión de gimnasios en todo su entorno.</p>
+                    </div>
+                </a>
+            </div>
 
+            <!-- Otras Tarjetas de Proyectos... -->
+            <!-- Sigue el mismo formato para los demás proyectos -->
+        </div>
+    </section>
 
-  <br>
-
-  <h1>Skillset</h1>
-  <br>
-  <section class="mx-auto ml-5 mr-5">
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img
-          src="../assets/img/kisspng-node-js-javascript-web-application-express-js-comp-5ae0f84e5e7537.0464945815246930703869.png"
-          alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Node js</h2>
-        <p>Es un entorno de ejecución de JavaScript, basado en una arquitectura no bloqueante y manejada por eventos para
-          ayudar a los desarrolladores a crear aplicaciones distribuidas robustas.</p>
-
-      </div>
-    </div>
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/pngwing.com.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Express</h2>
-        <p> Express es framework de aplicación web de Node js que proporciona amplias funciones para crear aplicaciones
-          web y móviles. Se utiliza para crear una aplicación web híbrida, de varias páginas y de una sola página.</p>
-
-      </div>
-    </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/toppng.com-sequelize-logo-443x512.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Sequelize</h2>
-        <p>Es un ORM para Nodejs que nos permite manipular varias bases de datos SQL de una manera bastante sencilla,
-          entre estas bases de datos podemos encontrar: mysql, sqlite, postgres, mssql.</p>
-
-      </div>
-    </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/js.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Javascript</h2>
-        <p>Es el lenguaje de programación que se usa para añadir interactidad a sitios web.</p>
-
-      </div>
-    </div>
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/posgres.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Postgres</h2>
-        <p>Es un sistema de gestión de bases de datos relacionales de código abierto con una gran capacidad de ampliación.
-        </p>
-
-      </div>
-    </div>
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/pngegg.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">React</h2>
-        <p>Es una combinación del lenguaje HTML y el JavaScript, por lo que también se considera una extensión</p>
-
-      </div>
-    </div>
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/redx.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Redux</h2>
-        <p>Es una librería para controlar el estado de nuestras aplicaciones web fácilmente, de una forma consistente
-          entre cliente y servidor, testeable y con una gran experiencia de desarrollo</p>
-
-      </div>
-    </div>
-
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure><img src="../assets/img/html.png" alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Html</h2>
-        <p>El Lenguaje de Marcado de Hipertexto (HTML) es el código que se utiliza para estructurar y desplegar una página
-          web y sus contenidos.</p>
-
-      </div>
-    </div>
-
-
-  </section>
-
-  <br>
-  <h1>Projects</h1>
-  <br>
-
-  <section class="mx-auto ml-5 mr-5">
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <a href="https://gym-mthatwords.vercel.app/" target="_blank"
-            rel="noopener noreferrer">
-      <figure><img
-          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1668474391/WhatsApp_Image_2022-10-20_at_5.42.28_PM_pfncqb.jpg"
-          alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Liberfit</h2>
-
-        <p>Es una aplicación WEB de administración y gestión de gimnasios en todo su entorno.</p>
-
-      </div>
-      </a>
-    </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <a href="https://pi-pokemon-main-rho.vercel.app/" target="_blank"
-            rel="noopener noreferrer">
-      <figure><img
-          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145563/Captura_nyf9ik.png"
-          alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Pokedex</h2>
-
-        <p>Es una aplicación WEB en donde puedes encontrar informacion de todos los Pokemons.</p>
-
-      </div>
-      </a>
-    </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <a href="https://stack-menv.onrender.com/" target="_blank"
-            rel="noopener noreferrer">
-      <figure><img
-          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura2_rt9y6s.png"
-          alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Notas</h2>
-
-        <p>Es una aplicación WEB en donde puedes guardar, listar eliminar y actulizar Notas.</p>
-
-      </div>
-      </a>
-    </div>
-    <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <a href="https://matricula-udwr.onrender.com/" target="_blank"
-            rel="noopener noreferrer">
-      <figure><img
-          src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura3_uano0e.png"
-          alt="Shoes" /></figure>
-      <div class="card-body">
-        <h2 class="card-title">Matricula</h2>
-
-        <p>Es una aplicación WEB en donde puedes guardar y arganizar estudiantes para matricular en una escuela.</p>
-
-      </div>
-      </a>
-    </div>
-  </section>
-  <br>
-  <footer class="footer p-10 bg-neutral text-neutral-content">
-    <div>
-      <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-        clip-rule="evenodd" class="fill-current">
-        <path
-          d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z">
-        </path>
-      </svg>
-      <p>Carlos Julián Ramos González<br />Full-stack web Deveper</p>
-    </div>
-    <div>
-      <span class="footer-title">Social</span>
-      <div class="grid grid-flow-col gap-4">
-        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-            <path
-              d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
-            </path>
-          </svg></a>
-        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-            <path
-              d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
-            </path>
-          </svg></a>
-        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-            <path
-              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
-            </path>
-          </svg></a>
-      </div>
-    </div>
-  </footer>
+    <footer class="footer p-10 bg-neutral text-neutral-content">
+        <div>
+            <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="fill-current">
+                <path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.456 1.015-.326 2.145.211 2.463 1.226l.841 2.517 5.013-1.677-.84-2.517c-.392-1.203.434-2.542 1.831-2.542.88 0 1.601.564 1.86 1.314l.842 2.515 2.431-.808c1.135-.328 2.145.317 2.463 1.229.328 1.018-.211 2.127-1.231 2.456l-2.433.809 1.622 4.823 2.432-.808c1.354-.385 2.558.59 2.558 1.839 0 .817-.509 1.581-1.328 1.846zm-11.775-.214l-1.622-4.824-5.013 1.678 1.622 4.823 5.013-1.677z" />
+            </svg>
+            <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+        </div>
+        <div>
+            <span class="footer-title">Social</span>
+            <div class="grid grid-flow-col gap-4">
+                <a href="https://twitter.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.563-2.005.974-3.127 1.195-.897-.955-2.178-1.55-3.594-1.55-2.717 0-4.92 2.203-4.92 4.92 0 .386.044.762.128 1.124-4.087-.205-7.713-2.164-10.141-5.144-.423.726-.666 1.571-.666 2.475 0 1.71.87 3.216 2.188 4.099-.807-.026-1.566-.247-2.228-.616v.062c0 2.388 1.697 4.384 3.946 4.838-.413.111-.849.171-1.296.171-.317 0-.626-.031-.927-.089.627 1.956 2.445 3.379 4.6 3.419-1.684 1.32-3.809 2.107-6.115 2.107-.398 0-.79-.023-1.175-.068 2.179 1.396 4.768 2.212 7.557 2.212 9.054 0 14.002-7.497 14.002-13.986 0-.213-.004-.425-.014-.637.961-.694 1.797-1.562 2.457-2.549z" />
+                    </svg>
+                </a>
+                <a href="https://youtube.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                        <path d="M19.615 3.184c-.683-.265-1.411-.443-2.22-.544-.81-.102-1.825-.166-3.011-.193-1.195-.028-2.435-.021-3.758-.021-1.323 0-2.563-.007-3.758.021-1.186.027-2.201.091-3.011.193-.809.101-1.537.279-2.22.544-.698.274-1.289.701-1.801 1.304-.513.603-.904 1.402-1.171 2.417-.284 1.062-.435 2.439-.435 4.071v1.292c0 1.632.151 3.009.435 4.071.267 1.015.658 1.814 1.171 2.417.512.603 1.103 1.03 1.801 1.304.683.265 1.411.443 2.22.544.81.102 1.825.166 3.011.193 1.195.028 2.435.021 3.758.021 1.323 0 2.563.007 3.758-.021 1.186-.027 2.201-.091 3.011-.193.809-.101 1.537-.279 2.22-.544.698-.274 1.289-.701 1.801-1.304.513-.603.904-1.402 1.171-2.417.284-1.062.435-2.439.435-4.071v-1.292c0-1.632-.151-3.009-.435-4.071-.267-1.015-.658-1.814-1.171-2.417-.512-.603-1.103-1.03-1.801-1.304zm-8.615 12.816v-7.5l6.5 3.75-6.5 3.75z" />
+                    </svg>
+                </a>
+                <a href="https://facebook.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
+                        <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.49v-9.284h-3.125v-3.622h3.125v-2.672c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.464.099 2.795.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.314h3.591l-.467 3.622h-3.124v9.284h6.124c.732 0 1.325-.593 1.325-1.324v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 </template>
 
 <style scoped>
-section {
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
 
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
+    html {
+        scroll-behavior: smooth;
+    }
 
-figure img {
-  width: 10rem;
-}
+    .container {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-.card {
-  border: solid 0.1px rgba(255, 248, 220, 0.561);
+    .title {
+        text-align: center;
+    }
 
-  padding: 20px 20px 20px 2px;
-}
+    .section {
+        margin-bottom: 20px;
+    }
 
-h1 {
-  font-size: 30px;
-  font-weight: bolder;
-  text-align: center;
-}
+    .card-body {
+        padding: 15px;
+    }
+
+    @media (max-width: 768px) {
+        .section {
+            margin-bottom: 10px;
+        }
+
+        .card-body {
+            padding: 10px;
+        }
+    }
 </style>
