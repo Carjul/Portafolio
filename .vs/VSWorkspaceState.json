@@ -3,8 +3,10 @@
     "",
     "\\assets",
     "\\assets\\img",
-    "\\pages"
+    "\\pages",
+    "\\server",
+    "\\server\\api"
   ],
-  "SelectedNode": "\\assets\\img\\pngegg.png",
+  "SelectedNode": "\\server\\api\\skills.ts",
   "PreviewInSolutionExplorer": false
 }
