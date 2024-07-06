@@ -151,7 +151,7 @@
     <br>
     <h1>Contact</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
         <ContactForm />
     </section>
     <footer class="footer p-10 bg-neutral text-neutral-content">
