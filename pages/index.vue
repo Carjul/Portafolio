@@ -1,14 +1,29 @@
 <script setup>
    
 
-    import { ref} from 'vue';
+    import { ref, onMounted} from 'vue';
+    import axios from 'axios'
 
+    const getskills = async () => {
+        try {
+            const response = await axios.get('http://localhost:3000/api/skills/read');
+            console.log('Habilidades:', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener las habilidades:', error);
+            return [];
+        }
+    };
       
-    const { data } = await useFetch('/api/skills/read')
+    
    
     
     const title = ref('Portafolio');
-    const skills = ref(data.value)
+    const skills = ref([])
+
+    onMounted(async () => {
+        skills.value = await getskills();
+    });
         
 </script>
 <template>

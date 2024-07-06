@@ -19,16 +19,40 @@
             <button type="submit" class="btn btn-primary mt-4">Crear</button>
           </form>
         </div>
+        
       </div>
     </div>
+    <div class="flex w-full h-ful px-5">
+
+    <section class="flex mx-auto ml-5 mr-5 flex-row flex-wrap">
+
+<div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl px-2 mt-5 mb-5">
+    <figure>
+        <img :src="skill.image" alt="Skill Image" loading="lazy" />
+    </figure>
+    <div class="card-body">
+        <h2 class="card-title">{{ skill.title }}</h2>
+        <p>{{ skill.description }}</p>
+    <div class="card-end">
+        <button class="btn btn-error">Eliminar</button>
+    </div>
+    </div>
+
+</div>
+
+
+</section>
+</div>
+
   </template>
   
   <script setup>
   import { ref, reactive } from 'vue';
   import axios from 'axios';
-  
+  const { data } = await useFetch('/api/skills/read')
   const fileInput = ref(null);
   const imageUrl = ref('');
+  const skills = ref(data.value)
   const skill = reactive({
     title: '',
     image: '', // Se actualizará con la URL de la imagen cargada
@@ -57,7 +81,7 @@
   
   const createSkill = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/skills/create', skill);
+      const response = await axios.post('/api/skills/create', skill);
       console.log('Habilidad creada:', response.data);
       // Limpia los campos del formulario
       skill.title = '';
