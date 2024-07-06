@@ -7,10 +7,11 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+    
     },
     routeRules: {
         '/': { prerender: true },
-        '/api/*': { cache: { maxAge: 60 * 60 } },
+        '/api/*':{ prerender: true },
         '/page': {
           redirect: { to: '/new-page', statusCode: 302 }
         }
@@ -18,7 +19,7 @@ export default defineNuxtConfig({
       },
     app: {
         head: {
-            title: 'Portafolio Carlos Ramos',
+            title: 'Portafolio Carlos Ramos | Desarrollador Web',
             meta: [
                 {
                     name: 'viewport',

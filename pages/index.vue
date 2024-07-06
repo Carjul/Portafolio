@@ -4,11 +4,11 @@
     import { ref} from 'vue';
 
       
-    const { data } = await useFetch('/api/skills')
+    const { data } = await useFetch('/api/skills/read')
    
     
     const title = ref('Portafolio');
-    const skills = ref(data.value.skills)
+    const skills = ref(data.value)
         
 </script>
 <template>
