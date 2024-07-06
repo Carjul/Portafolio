@@ -6,7 +6,7 @@
 
     const getskills = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/skills/read');
+            const response = await axios.get('/api/skills/read');
             console.log('Habilidades:', response.data);
             return response.data;
         } catch (error) {
@@ -65,9 +65,9 @@
 
     <br>
 
-    <h1>Skillset</h1>
+    <h1 >Skillset</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
 
         <div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <figure>
@@ -86,7 +86,7 @@
     <h1>Projects</h1>
     <br>
 
-    <section class="mx-auto ml-5 mr-5">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
         <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <a href="https://gym-mthatwords.vercel.app/" target="_blank"
                rel="noopener noreferrer">
@@ -149,6 +149,11 @@
         </div>
     </section>
     <br>
+    <h1>Contact</h1>
+    <br>
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+        <ContactForm />
+    </section>
     <footer class="footer p-10 bg-neutral text-neutral-content">
         <div>
             <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"

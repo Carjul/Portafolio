@@ -16,7 +16,9 @@
               <label class="label">Descripción:</label>
               <textarea v-model="skill.description" class="textarea textarea-bordered w-full max-w-xs" />
             </div>
-            <button type="submit" class="btn btn-primary mt-4">Crear</button>
+            <button v-if="!update" type="submit" class="btn btn-primary mt-4">Crear</button>
+            <button v-else @click="updateSkill()" class="btn btn-primary mt-4">Actualizar</button>
+
           </form>
         </div>
         
@@ -26,7 +28,7 @@
 
     <section class="flex mx-auto ml-5 mr-5 flex-row flex-wrap">
 
-<div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl px-2 mt-5 mb-5">
+<div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl px-2 mt-5 mb-5" >
     <figure>
         <img :src="skill.image" alt="Skill Image" loading="lazy" />
     </figure>
@@ -34,7 +36,8 @@
         <h2 class="card-title">{{ skill.title }}</h2>
         <p>{{ skill.description }}</p>
     <div class="card-end">
-        <button class="btn btn-error">Eliminar</button>
+        <button class="btn btn-error" @click="deleteSkill(skill._id)">Eliminar</button>
+        <button class="btn btn-primary" @click="setinputkill(skill,skill._id)">Editar</button>
     </div>
     </div>
 
@@ -47,17 +50,38 @@
   </template>
   
   <script setup>
-  import { ref, reactive } from 'vue';
+  import { ref, reactive, onMounted } from 'vue';
   import axios from 'axios';
-  const { data } = await useFetch('/api/skills/read')
-  const fileInput = ref(null);
-  const imageUrl = ref('');
-  const skills = ref(data.value)
-  const skill = reactive({
+ const update = ref(false)
+  const getskills = async () => {
+        try {
+            const response = await axios.get('/api/skills/read');
+          
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener las habilidades:', error);
+            return [];
+        }
+    };
+    const skill = reactive({
+    _id: '',
     title: '',
-    image: '', // Se actualizará con la URL de la imagen cargada
+    image: '', 
     description: '',
   });
+  const setinputkill= async (params,id) => {
+    skill._id = id;
+    skill.title = params.title;
+    skill.image = params.image;
+    skill.description =params.description;
+    imageUrl.value = params.image;
+    update.value = true;
+  
+  };
+  const fileInput = ref(null);
+  const imageUrl = ref('');
+  const skills = ref([]);
+  
   
   const handleFileChange = async () => {
     if (fileInput.value.files.length === 0) {
@@ -78,12 +102,38 @@
   
     reader.readAsDataURL(file);
   };
-  
+  const deleteSkill = async (id) => {
+    try {
+      const response = await axios.delete(`/api/skills/delete`,{
+      data: { _id: id }
+    });
+      console.log('Habilidad eliminada:', response.data);
+      skills.value = await getskills();
+    } catch (error) {
+      console.error('Error al eliminar la habilidad:', error);
+    }
+  };
+  const updateSkill = async () => {
+    try {
+      console.log(skill)
+      const response = await axios.put(`/api/skills/update`, skill);
+      console.log('Habilidad actualizada:', response.data);
+      skills.value = await getskills();
+      skill._id = '';
+      skill.title = '';
+      skill.description = '';
+      imageUrl.value = '';
+      update.value = false;
+    } catch (error) {
+      console.error('Error al actualizar la habilidad:', error);
+    }
+  };
   const createSkill = async () => {
     try {
       const response = await axios.post('/api/skills/create', skill);
       console.log('Habilidad creada:', response.data);
-      // Limpia los campos del formulario
+      skills.value = await getskills();
+      
       skill.title = '';
       skill.description = '';
       imageUrl.value = '';
@@ -91,6 +141,9 @@
       console.error('Error al crear la habilidad:', error);
     }
   };
+  onMounted(async () => {
+    skills.value = await getskills();
+  });
   </script>
   
   <style scoped>
