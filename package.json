@@ -10,6 +10,7 @@
   "devDependencies": {
     "@sidebase/nuxt-pdf": "^0.1.1",
     "@types/mongodb": "^4.0.7",
+    "@types/nodemailer": "^6.4.15",
     "autoprefixer": "^10.4.13",
     "nuxt": "3.0.0",
     "postcss": "^8.4.19",
@@ -20,6 +21,7 @@
     "axios": "^1.7.2",
     "cloudinary": "^2.2.0",
     "daisyui": "^2.42.1",
-    "mongodb": "^6.8.0"
+    "mongodb": "^6.8.0",
+    "nodemailer": "^6.9.14"
   }
 }

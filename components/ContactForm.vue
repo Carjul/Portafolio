@@ -24,7 +24,7 @@
   
   <script setup>
   import { ref } from 'vue';
-  
+  import axios from 'axios';
   const form = ref({
     name: '',
     email: '',
@@ -35,11 +35,14 @@
   const submitContactForm = async () => {
   
       console.log('Contact form submitted:', form.value);
-  
+      await axios.post('/api/email/send', form.value);
+      form.value.name = '';
+      form.value.email = '';
+      form.value.subject = '';
+      form.value.message = '';
+      
   };
   </script>
   
-  <style scoped>
-  /* Add any additional styling here if necessary */
-  </style>
+
     
