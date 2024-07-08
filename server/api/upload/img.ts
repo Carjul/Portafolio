@@ -1,11 +1,6 @@
-import { v2 as cloudinary } from 'cloudinary';
+
 import { defineEventHandler, readBody, createError } from 'h3';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
-  api_key: process.env.CLOUDINARY_API_KEY!,
-  api_secret: process.env.CLOUDINARY_API_SECRET!,
-});
 
 
 export default defineEventHandler(async (event) => {
@@ -27,9 +22,6 @@ export default defineEventHandler(async (event) => {
 
     
 
-     // Utiliza cloudinary.uploader.upload_base64() para cargar desde base64
-     const uploadResult = await cloudinary.uploader.upload_url(imageBase64)
-    console.log({url: uploadResult.secure_url})
       
       return {
       message: 'Upload successful',
