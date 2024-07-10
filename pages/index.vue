@@ -1,6 +1,4 @@
 <script setup>
-   
-
     import { ref, onMounted} from 'vue';
     import axios from 'axios'
 
@@ -15,14 +13,24 @@
         }
     };
       
+    const getprojects = async () => {
+        try {
+            const response = await axios.get('/api/projects/read');
+            console.log('Proyectos:', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener los proyectos:', error);
+            return [];
+        }
+    };
     
    
-    
-    const title = ref('Portafolio');
     const skills = ref([])
+    const projects = ref([])
 
     onMounted(async () => {
         skills.value = await getskills();
+        projects.value = await getprojects();
     });
         
 </script>
@@ -87,7 +95,18 @@
     <br>
 
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5" v-for=" (project, index) in projects" :key="index">
+            <a :href="project.url" target="_blank" rel="noopener noreferrer">
+                <figure>
+                    <img :src="project.image" alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{{ project.name }}</h2>
+                    <p>{{ project.description }}</p>
+                </div>
+            </a>
+        </div>
+        <!-- <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <a href="https://gym-mthatwords.vercel.app/" target="_blank"
                rel="noopener noreferrer">
                 <figure>
@@ -146,7 +165,7 @@
 
                 </div>
             </a>
-        </div>
+        </div> -->
     </section>
     <br>
     <h1>Contact</h1>
