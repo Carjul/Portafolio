@@ -1,47 +1,51 @@
-<script setup>
-    import { ref, onMounted} from 'vue';
-    import axios from 'axios'
+<<script setup>
+import { ref, onMounted, watchEffect } from 'vue';
+import axios from 'axios';
 
-    const getskills = async () => {
+const getDataWithRetry = async (url) => {
+    let response;
+    while (true) {
         try {
-            const response = await axios.get('/api/skills/read');
-            console.log('Habilidades:', response.data);
-            return response.data;
+            response = await axios.get(url);
+            if (response.status !== 500) {
+                break;
+            }
         } catch (error) {
-            console.error('Error al obtener las habilidades:', error);
-            return [];
+            if (error.response && error.response.status !== 500) {
+                break;
+            }
         }
-    };
-      
-    const getprojects = async () => {
-        try {
-            const response = await axios.get('/api/projects/read');
-            console.log('Proyectos:', response.data);
-            return response.data;
-        } catch (error) {
-            console.error('Error al obtener los proyectos:', error);
-            return [];
-        }
-    };
-    
-   
-    const skills = ref([])
-    const projects = ref([])
+        // Espera un segundo antes de intentar de nuevo
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
+    return response ? response.data : [];
+};
 
-    onMounted(async () => {
-        skills.value = await getskills();
-        projects.value = await getprojects();
-    });
-        
+const getskills = () => getDataWithRetry('/api/skills/read');
+const getprojects = () => getDataWithRetry('/api/projects/read');
+
+const skills = ref([]);
+const projects = ref([]);
+
+onMounted(async () => {
+    skills.value = await getskills();
+    projects.value = await getprojects();
+});
+
+watchEffect(() => {
+    console.log('Skills:', skills.value);
+    console.log('Projects:', projects.value);
+});
 </script>
+
 <template>
-    <main class="flex flex-col items-center  bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full ">
+    <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full">
         <section class="flex flex-col">
             <nav class="py-10 flex items-start">
-                <h1 class="font-burtons text-xl">Developed byed</h1>
+                <h1 class="font-burtons text-xl">Developed by</h1>
                 <ul class="flex items-center">
                     <li>
-                        <a class="bg-primary from-cyan-500 text- to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
+                        <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
                            href="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" target="_blank">
                             Resume
                         </a>
@@ -57,26 +61,19 @@
                 <h3 class="text-2xl py-2 md:text-3xl">
                     Full-stack Developer
                 </h3>
-                <p class="text-md py-5 leading-8  max-w-xl mx-auto md:text-xl">
-                    Freelancer providing services for programming and design websites. Join me down below and let's get work!
+                <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl">
+                    Freelancer providing services for programming and design websites. Join me down below and let's get to work!
                 </p>
-
                 <div class="mx-auto rounded-full w-60 h-60 mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
                     <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" />
                 </div>
-
             </div>
-
         </section>
     </main>
-
-
     <br>
-
-    <h1 >Skillset</h1>
+    <h1>Skillset</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-
         <div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <figure>
                 <img :src="skill.image" alt="Skill Image" loading="lazy" />
@@ -86,19 +83,15 @@
                 <p>{{ skill.description }}</p>
             </div>
         </div>
-
-
     </section>
-
     <br>
     <h1>Projects</h1>
     <br>
-
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5" v-for=" (project, index) in projects" :key="index">
+        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5" v-for="(project, index) in projects" :key="index">
             <a :href="project.url" target="_blank" rel="noopener noreferrer">
                 <figure>
-                    <img :src="project.image" alt="Shoes" />
+                    <img :src="project.image" alt="Project Image" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">{{ project.name }}</h2>
@@ -106,66 +99,6 @@
                 </div>
             </a>
         </div>
-        <!-- <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <a href="https://gym-mthatwords.vercel.app/" target="_blank"
-               rel="noopener noreferrer">
-                <figure>
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1668474391/WhatsApp_Image_2022-10-20_at_5.42.28_PM_pfncqb.jpg"
-                         alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">Liberfit</h2>
-
-                    <p>Es una aplicación WEB de administración y gestión de gimnasios en todo su entorno.</p>
-
-                </div>
-            </a>
-        </div>
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <a href="https://pi-pokemon-main-rho.vercel.app/" target="_blank"
-               rel="noopener noreferrer">
-                <figure>
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145563/Captura_nyf9ik.png"
-                         alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">Pokedex</h2>
-
-                    <p>Es una aplicación WEB en donde puedes encontrar informacion de todos los Pokemons.</p>
-
-                </div>
-            </a>
-        </div>
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <a href="https://stack-menv.onrender.com/" target="_blank"
-               rel="noopener noreferrer">
-                <figure>
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura2_rt9y6s.png"
-                         alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">Notas</h2>
-
-                    <p>Es una aplicación WEB en donde puedes guardar, listar eliminar y actulizar Notas.</p>
-
-                </div>
-            </a>
-        </div>
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <a href="https://matricula-udwr.onrender.com/" target="_blank"
-               rel="noopener noreferrer">
-                <figure>
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1694145700/Captura3_uano0e.png"
-                         alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">Matricula</h2>
-
-                    <p>Es una aplicación WEB en donde puedes guardar y arganizar estudiantes para matricular en una escuela.</p>
-
-                </div>
-            </a>
-        </div> -->
     </section>
     <br>
     <h1>Contact</h1>
@@ -173,6 +106,7 @@
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
         <ContactForm />
     </section>
+    
     <footer class="footer p-10 bg-neutral text-neutral-content">
         <div>
             <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
