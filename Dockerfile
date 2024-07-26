@@ -14,7 +14,8 @@ RUN npm install
 COPY . .
 
 # Construye la aplicación Nuxt.js
-RUN npm run generate
+
+CMD ["npm", "run", "generate"]
 
 # Expone el puerto predeterminado de Nuxt.js
 EXPOSE 3000
