@@ -1,20 +1,23 @@
-# Use the official Node.js 14 image as the base image
+# Usa la imagen oficial de Node.js 18 como base
 FROM node:18-alpine
 
-# Set the working directory inside the container
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Copia package.json y package-lock.json al directorio de trabajo
 COPY package*.json ./
 
-# Install dependencies
+# Instala las dependencias
 RUN npm install
 
-# Copy the rest of the application code to the working directory
+# Copia el resto del código de la aplicación al directorio de trabajo
 COPY . .
 
-# Expose the default Nuxt.js port (3000)
+# Construye la aplicación Nuxt.js
+RUN npm run build
+
+# Expone el puerto predeterminado de Nuxt.js
 EXPOSE 3000
 
-# Start the Nuxt.js development server
+# Ejecuta el servidor Nuxt.js en modo de producción
 CMD ["npm", "run", "dev"]
