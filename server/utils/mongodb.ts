@@ -11,11 +11,15 @@ export async function connect(): Promise<MongoClient> {
     return cachedClient;
   }
 
-  const client = new MongoClient(MONGODB_URI);
-
-  await client.connect();
-  cachedClient = client;
-  return client;
+  try {
+    const client = new MongoClient(MONGODB_URI);
+    await client.connect();
+    cachedClient = client;
+    return client;
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    throw new Error('Could not connect to MongoDB');
+  }
 }
 
 export async function getDatabase(client: MongoClient): Promise<Db> {
