@@ -1,6 +1,7 @@
 import { MongoClient, Db, Collection } from 'mongodb';
+const config = useRuntimeConfig();
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = config.public.MONGODB_URI!;
 const MONGODB_DB = 'Portafolio';
 
 let cachedClient: MongoClient | null = null;

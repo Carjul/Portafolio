@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
-
-const password = process.env.PASSWORD!;
+const config = useRuntimeConfig()
+const password = config.public.PASSWORD!;
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
