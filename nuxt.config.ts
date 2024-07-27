@@ -3,11 +3,11 @@ export default defineNuxtConfig({
   modules: ['@sidebase/nuxt-pdf'],
   runtimeConfig: {
     public: {
-      MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-      CLOUDINARY_CLOUD_NAME: 'dn4xdl2v5',
-      CLOUDINARY_API_KEY: '357585198847445',
-      CLOUDINARY_API_SECRET: 'odYQsXNPvjMByG800ToDDoEajlY',
-      PASSWORD: 'fuaq brxw tvyt oltk'
+      MONGODB_URI: process.env.MONGODB_URI,
+      CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+      CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+      CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+      PASSWORD: process.env.PASSWORD,
     }
   },
   css: ['~/assets/css/main.css'],
