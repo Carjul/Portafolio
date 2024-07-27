@@ -28,6 +28,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+    
       title: 'Portafolio Carlos Ramos | Desarrollador Web',
       meta: [
         {
@@ -39,7 +40,14 @@ export default defineNuxtConfig({
         },
 
       ]
-
+,
+link: [
+  {
+    rel: 'icon',
+    type: 'image/x-icon',
+    href: '/Portafolio/assets/img/portfolio.ico',
+  },
+],
     },
   },
 })
