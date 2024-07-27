@@ -5,4 +5,5 @@ package-lock.json
 .nitro
 .cache
 .output
+.env
 dist
