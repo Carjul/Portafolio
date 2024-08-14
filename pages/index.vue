@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 
 const getDataWithRetry = async (url) => {
@@ -24,66 +24,97 @@ const getDataWithRetry = async (url) => {
 const getskills = () => getDataWithRetry('/api/skills/read');
 const getprojects = () => getDataWithRetry('/api/projects/read');
 
+const currentPageSkill= ref(1);
+const itemsPerPageSkill= ref(3);
 const skills = ref([]);
 const projects = ref([]);
+
+const totalPageSkill = computed(() => {
+    return Math.ceil(skills.value.length / itemsPerPageSkill.value);
+});
+
+const paginatedSkills = computed (() => {
+    const from = (currentPageSkill.value - 1) * itemsPerPageSkill.value;
+    const to = from + itemsPerPageSkill.value;
+    return skills.value.slice(from, to);
+});
+
+function prevPageskill() {
+      if (currentPageSkill.value > 1) {
+        currentPageSkill.value--;
+      }
+    }
+function nextPageskill() {
+    console.log(totalPageSkill);
+      if (currentPageSkill.value < totalPageSkill.value) {
+        currentPageSkill.value++;
+      }
+    }
 
 onMounted(async () => {
     skills.value = await getskills();
     projects.value = await getprojects();
 });
 
-watchEffect(() => {
-    console.log('Skills:', skills.value);
-    console.log('Projects:', projects.value);
-});
+
 </script>
 
 <template>
-    <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full">
-        <section class="flex flex-col">
-            <nav class="py-10 flex items-start">
-                <h1 class="font-burtons text-xl">Developed by</h1>
-                <ul class="flex items-center">
-                    <li>
-                        <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
-                           href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
-                            Resume
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-        <section class="pb-2 text-neutral-content">
-            <div class="flex flex-col items-center text-center p-10 py-10">
-                <h2 class="text-2xl py-2 md:text-3xl">
-                    Carlos Julian Ramos González
-                </h2>
-                <h3 class="text-2xl py-2 md:text-3xl">
-                    Full-stack Developer
-                </h3>
-                <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl">
-                    Freelancer providing services for programming and design websites. Join me down below and let's get to work!
-                </p>
-                <div class="mx-auto rounded-full w-60 h-60 mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1669587531/WhatsApp_Image_2022-09-06_at_8.17.22_PM_lz0qp5.jpg" layout="fill" objectFit="cover" />
-                </div>
+ <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-pink-500 hover:via-blue-500">
+    <section class="flex flex-col">
+        <nav class="mt-10 flex items-center">
+            <h1 class="font-burtons text-xl">Developed by</h1>
+            <ul class="flex items-center">
+                <li>
+                    <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
+                       href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
+                        Resume
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <section class="pb-2 text-neutral-content">
+        <div class="flex flex-col items-center text-center p-10 py-10">
+            <h2 class="text-2xl py-2 md:text-3xl">
+                Carlos Julian Ramos González
+            </h2>
+            <h3 class="text-2xl py-2 md:text-3xl">
+                 Developer Web
+            </h3>
+            <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl">
+               </p>
+            
+            <div class="mx-auto rounded-full w-60 h-60 hover:border  mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
+                <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg" layout="fill" objectFit="cover" />
             </div>
-        </section>
-    </main>
+            <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl">
+                Soy un desarrollador full-stack con experiencia en tecnologías como Vue.js, Node.js, y bases de datos SQL/NoSQL. Me especializo en crear interfaces intuitivas y escalables, optimizando la experiencia del usuario con un enfoque en diseño responsive y rendimiento web. Lo que me apasiona como desarrollador es la oportunidad de resolver problemas complejos a través de soluciones creativas y eficientes, mientras aprendo constantemente nuevas herramientas y tecnologías para estar a la vanguardia del desarrollo web. </p>
+        </div>
+    </section>
+</main>
+
     <br>
     <h1>Skillset</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div v-for="(skill, index) in skills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <figure>
-                <img :src="skill.image" alt="Skill Image" loading="lazy" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">{{ skill.title }}</h2>
-                <p>{{ skill.description }}</p>
-            </div>
-        </div>
-    </section>
+    <div v-for="(skill, index) in paginatedSkills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <figure>
+        <img :src="skill.image" alt="Skill Image" loading="lazy" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ skill.title }}</h2>
+        <p>{{ skill.description }}</p>
+      </div>
+    </div>
+
+  </section>
+  <div class="flex justify-center items-center mt-4">
+      <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4"><</button>
+      <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
+      <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill" class="btn btn-primary ml-4">></button>
+    </div>
+
     <br>
     <h1>Projects</h1>
     <br>
