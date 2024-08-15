@@ -92,7 +92,7 @@ function nextPageProject() {
  <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-500 hover:via-purple-500">
     <section class="flex flex-col">
         <nav class="mt-10 flex items-center">
-            <h1 class="font-burtons text-xl text-neutral-content">Developed by</h1>
+            <h1 class="font-burtons text-xl text-neutral-content">Portfolio de</h1>
             <ul class="flex items-center">
                 <li class="mx-5">
                     <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500"
