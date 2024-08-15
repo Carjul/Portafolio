@@ -94,7 +94,7 @@ function nextPageProject() {
         <nav class="mt-10 flex items-center">
             <h1 class="font-burtons text-xl text-neutral-content">Portfolio de</h1>
             <ul class="flex items-center">
-                <li class="mx-5">
+                <li>
                     <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500"
                        href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
                         Resume
@@ -132,7 +132,7 @@ function nextPageProject() {
     </section>
 </main>
     <br>
-    <h1>Skillset</h1>
+    <h1>Conjunto de habilidades</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
     <div v-for="(skill, index) in paginatedSkills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
@@ -153,7 +153,7 @@ function nextPageProject() {
     </div>
 
      <br>
-    <h1>Projects</h1>
+    <h1>Proyectos</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
         <div v-for="(project, index) in paginatedProjects" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
