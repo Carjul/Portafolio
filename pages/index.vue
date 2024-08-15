@@ -93,7 +93,7 @@ function nextPageProject() {
     <section class="flex flex-col">
         <nav class="mt-10 flex items-center">
             <h1 class="font-burtons text-xl text-neutral-content">Developed by</h1>
-            <ul class="flex items-center">
+            <ul class="flex items-center mx-auto">
                 <li>
                     <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500"
                        href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
