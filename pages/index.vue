@@ -144,11 +144,11 @@ function nextPageProject() {
       <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill" class="btn btn-primary ml-4">></button>
     </div>
 
-    <br>
+     <br>
     <h1>Projects</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5" v-for="(project, index) in projects" :key="index">
+        <div v-for="(project, index) in paginatedProjects" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <a :href="project.url" target="_blank" rel="noopener noreferrer">
                 <figure>
                     <img :src="project.image" alt="Project Image" />
@@ -160,6 +160,11 @@ function nextPageProject() {
             </a>
         </div>
     </section>
+    <div class="flex justify-center items-center mt-4">
+        <button @click="prevPageProject" :disabled="currentPageProject === 1" class="btn btn-primary mr-4"><</button>
+        <span>{{ currentPageProject }} / {{ totalPageProject }}</span>
+        <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject" class="btn btn-primary ml-4">></button>
+    </div>
    <!--  <br>
     <h1>CV</h1>
     <br>
