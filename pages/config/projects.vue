@@ -140,6 +140,9 @@ const updateSkill = async () => {
 };
 const createSkill = async () => {
   try {
+    if ('_id' in prejects) {
+        delete prejects._id;
+      }
     const response = await axios.post('/api/projects/create', prejects);
     console.log('Habilidad creada:', response.data);
     skills.value = await getskills();

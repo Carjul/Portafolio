@@ -23,7 +23,7 @@ const getDataWithRetry = async (url) => {
 
 const getskills = () => getDataWithRetry('/api/skills/read');
 const getprojects = () => getDataWithRetry('/api/projects/read');
-
+//-----------------------------------------------------------------------------
 const currentPageSkill= ref(1);
 const itemsPerPageSkill= ref(3);
 const skills = ref([]);
@@ -50,23 +50,52 @@ function nextPageskill() {
         currentPageSkill.value++;
       }
     }
-
+    
 onMounted(async () => {
     skills.value = await getskills();
     projects.value = await getprojects();
 });
 
+//-----------------------------------------------------------------------------
+// Referencias y lógica de paginación para proyectos
+const currentPageProject = ref(1);
+const itemsPerPageProject = ref(3);
+
+
+// Cálculo del total de páginas para proyectos
+const totalPageProject = computed(() => {
+    return Math.ceil(projects.value.length / itemsPerPageProject.value);
+});
+
+// Proyectos paginados
+const paginatedProjects = computed(() => {
+    const from = (currentPageProject.value - 1) * itemsPerPageProject.value;
+    const to = from + itemsPerPageProject.value;
+    return projects.value.slice(from, to);
+});
+
+// Funciones de navegación para la paginación de proyectos
+function prevPageProject() {
+    if (currentPageProject.value > 1) {
+        currentPageProject.value--;
+    }
+}
+function nextPageProject() {
+    if (currentPageProject.value < totalPageProject.value) {
+        currentPageProject.value++;
+    }
+}
 
 </script>
 
 <template>
- <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-pink-500 hover:to-pink-500 hover:via-blue-500">
+ <main class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-500 hover:via-purple-500">
     <section class="flex flex-col">
         <nav class="mt-10 flex items-center">
-            <h1 class="font-burtons text-xl">Developed by</h1>
+            <h1 class="font-burtons text-xl text-neutral-content">Developed by</h1>
             <ul class="flex items-center">
                 <li>
-                    <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 hover:from-cyan-600 hover:to-teal-600 transition-all duration-300 ease-in-out"
+                    <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500"
                        href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
                         Resume
                     </a>
@@ -76,24 +105,24 @@ onMounted(async () => {
     </section>
     <section class="pb-2 text-neutral-content">
         <div class="flex flex-col items-center text-center p-10 py-10">
-            <h2 class="text-2xl py-2 md:text-3xl">
+            <h2 class="text-2xl py-2 md:text-3xl text-neutral-content">
                 Carlos Julian Ramos González
             </h2>
-            <h3 class="text-2xl py-2 md:text-3xl">
-                 Developer Web
+            <h3 class="text-2xl py-2 md:text-3xl text-neutral-content">
+                Developer Web
             </h3>
-            <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl">
-               </p>
+            <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl text-neutral-content">
+            </p>
             
-            <div class="mx-auto rounded-full w-60 h-60 hover:border  mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg" layout="fill" objectFit="cover" />
+            <div class="mx-auto rounded-full w-60 h-60 hover:border transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
+                <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg" class="object-cover w-full h-full" />
             </div>
-            <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl">
-                Soy un desarrollador full-stack con experiencia en tecnologías como Vue.js, Node.js, y bases de datos SQL/NoSQL. Me especializo en crear interfaces intuitivas y escalables, optimizando la experiencia del usuario con un enfoque en diseño responsive y rendimiento web. Lo que me apasiona como desarrollador es la oportunidad de resolver problemas complejos a través de soluciones creativas y eficientes, mientras aprendo constantemente nuevas herramientas y tecnologías para estar a la vanguardia del desarrollo web. </p>
+            <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-neutral-content">
+                Soy un desarrollador full-stack con experiencia en tecnologías como Vue.js, Node.js, y bases de datos SQL/NoSQL. Me especializo en crear interfaces intuitivas y escalables, optimizando la experiencia del usuario con un enfoque en diseño responsive y rendimiento web. Lo que me apasiona como desarrollador es la oportunidad de resolver problemas complejos a través de soluciones creativas y eficientes, mientras aprendo constantemente nuevas herramientas y tecnologías para estar a la vanguardia del desarrollo web.
+            </p>
         </div>
     </section>
 </main>
-
     <br>
     <h1>Skillset</h1>
     <br>

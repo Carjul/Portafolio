@@ -114,7 +114,7 @@
   };
   const updateSkill = async () => {
     try {
-      console.log(skill)
+      
       const response = await axios.put(`/api/skills/update`, skill);
       console.log('Habilidad actualizada:', response.data);
       skills.value = await getskills();
@@ -129,6 +129,9 @@
   };
   const createSkill = async () => {
     try {
+      if ('_id' in skill) {
+        delete skill._id;
+      }
       const response = await axios.post('/api/skills/create', skill);
       console.log('Habilidad creada:', response.data);
       skills.value = await getskills();
