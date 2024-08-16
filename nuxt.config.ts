@@ -1,4 +1,3 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
   modules: ['@sidebase/nuxt-pdf'],
   runtimeConfig: {
@@ -16,7 +15,6 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
-
   },
   routeRules: {
     '/': { prerender: true },
@@ -24,30 +22,21 @@ export default defineNuxtConfig({
     '/page': {
       redirect: { to: '/new-page', statusCode: 302 }
     }
-
   },
   app: {
     head: {
-    
       title: 'Portafolio Carlos Ramos | Desarrollador Web',
       meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { charset: 'utf-8' }
+      ],
+      link: [
         {
-          name: 'viewport',
-          content: 'width=device-width, initial-scale=1',
-        },
-        {
-          charset: 'utf-8',
-        },
-
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: 'https://res.cloudinary.com/dim2wnoej/image/upload/v1723819201/jcz4dpbwxx4zjaqm0tos.ico'
+        }
       ]
-,
-link: [
-  {
-    rel: 'icon',
-    type: 'image/x-icon',
-    href: '/Portafolio/assets/img/portfolio.ico',
-  },
-],
-    },
-  },
-})
+    }
+  }
+});
