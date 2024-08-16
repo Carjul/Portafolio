@@ -131,27 +131,6 @@ function nextPageProject() {
         </div>
     </section>
 </main>
-    <br>
-    <h1>Conjunto de habilidades</h1>
-    <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-    <div v-for="(skill, index) in paginatedSkills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-      <figure>
-        <img :src="skill.image" alt="Skill Image" loading="lazy" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">{{ skill.title }}</h2>
-        <p>{{ skill.description }}</p>
-      </div>
-    </div>
-
-  </section>
-  <div class="flex justify-center items-center mt-4">
-      <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4"><</button>
-      <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
-      <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill" class="btn btn-primary ml-4">></button>
-    </div>
-
      <br>
     <h1>Proyectos</h1>
     <br>
@@ -173,6 +152,28 @@ function nextPageProject() {
         <span>{{ currentPageProject }} / {{ totalPageProject }}</span>
         <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject" class="btn btn-primary ml-4">></button>
     </div>
+    
+    <br>
+    <h1>Conjunto de habilidades</h1>
+    <br>
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+    <div v-for="(skill, index) in paginatedSkills" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
+      <figure>
+        <img :src="skill.image" alt="Skill Image" loading="lazy" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">{{ skill.title }}</h2>
+        <p>{{ skill.description }}</p>
+      </div>
+    </div>
+
+  </section>
+  <div class="flex justify-center items-center mt-4">
+      <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4"><</button>
+      <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
+      <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill" class="btn btn-primary ml-4">></button>
+    </div>
+
    <!--  <br>
     <h1>CV</h1>
     <br>

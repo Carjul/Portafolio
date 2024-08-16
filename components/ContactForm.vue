@@ -1,24 +1,23 @@
 
 <template >
     <form @submit.prevent="submitContactForm" class="form flex flex-col w-4/5 mx-auto mb-10 mt-10 ">
-      <label class="input input-bordered flex items-center ">
-        Name
-        <input v-model="form.name" type="text"  placeholder="Your Name"  
+      
+        <input v-model="form.name" type="text"  placeholder="Nombre"  
         class="input h-full w-full " required />
+      
+      <label class="input input-bordered flex items-center gap-2">
+        
+        <input v-model="form.email" type="email"  placeholder="Email"  class="input h-full w-full " required />
       </label>
       <label class="input input-bordered flex items-center gap-2">
-        Email
-        <input v-model="form.email" type="email"  placeholder="Your Email"  class="input h-full w-full " required />
-      </label>
-      <label class="input input-bordered flex items-center gap-2">
-        Subject
-        <input v-model="form.subject" type="text"  placeholder="Subject" class="input h-full w-full " required />
+        
+        <input v-model="form.subject" type="text"  placeholder="Asunto" class="input h-full w-full " required />
       </label>
       <label class="input input-bordered flex items-center h-auto ">
-        Message
-        <textarea v-model="form.message"  placeholder="Your Message" class="textarea w-full px-4"  required></textarea>
+        
+        <textarea v-model="form.message"  placeholder="Mensaje" class="textarea w-full px-4"  required></textarea>
       </label>
-      <button type="submit" class="btn btn-primary mt-4">Send</button>
+      <button type="submit" class="btn btn-primary mt-4">Enviar</button>
     </form>
   </template>
   
