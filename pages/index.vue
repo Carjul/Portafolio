@@ -202,13 +202,16 @@ function nextPageProject() {
             </a>
         </div>
     </section>
-    <div class="flex justify-center items-center mt-4">
-        <button @click="prevPageProject" :disabled="currentPageProject === 1" class="btn btn-primary mr-4">
-            {{fr}}< /button>
+
+        <div class="flex justify-center items-center mt-4">
+                <button @click="prevPageProject" :disabled="currentPageProject === 1" class="btn btn-primary mr-4">
+                    &lt;&lt;
+                </button>
                 <span>{{ currentPageProject }} / {{ totalPageProject }}</span>
-                <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject"
-                    class="btn btn-primary ml-4">{{fl}}</button>
-    </div>
+                <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject" class="btn btn-primary ml-4">
+                    &gt;
+                </button>
+            </div>
 
     <br>
     <h1>Conjunto de habilidades</h1>
@@ -227,11 +230,9 @@ function nextPageProject() {
 
     </section>
     <div class="flex justify-center items-center mt-4">
-        <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4">
-            {{fr}}< /button>
+        <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4"> &lt;&lt;</button>
                 <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
-                <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill"
-                    class="btn btn-primary ml-4">{{fl}}</button>
+        <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill"  class="btn btn-primary ml-4"> &gt;</button>
     </div>
 
     <!--  <br>
