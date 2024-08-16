@@ -2,6 +2,8 @@
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 
+
+
 const getDataWithRetry = async (url) => {
     let response;
     while (true) {
@@ -21,7 +23,8 @@ const getDataWithRetry = async (url) => {
     return response ? response.data : [];
 };
 const isDarkMode = ref(false)
-
+const fl = ref(">")
+const fr = ref("<")
 // Función para alternar el tema
 const toggleTheme = () => {
   isDarkMode.value = !isDarkMode.value
@@ -132,7 +135,8 @@ function nextPageProject() {
                     <li class="mx-5">
                         <label className="swap swap-rotate">
 
-                            <input type="checkbox"  @change="toggleTheme" :checked="isDarkMode/>
+                            <input type="checkbox" @change="toggleTheme" :checked="isDarkMode" />
+
 
                             {/* moon icon */}
                             <svg className="swap-on h-10 w-10 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -200,10 +204,10 @@ function nextPageProject() {
     </section>
     <div class="flex justify-center items-center mt-4">
         <button @click="prevPageProject" :disabled="currentPageProject === 1" class="btn btn-primary mr-4">
-            << /button>
+            {{fr}}< /button>
                 <span>{{ currentPageProject }} / {{ totalPageProject }}</span>
                 <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject"
-                    class="btn btn-primary ml-4">></button>
+                    class="btn btn-primary ml-4">{{fl}}</button>
     </div>
 
     <br>
@@ -224,10 +228,10 @@ function nextPageProject() {
     </section>
     <div class="flex justify-center items-center mt-4">
         <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4">
-            << /button>
+            {{fr}}< /button>
                 <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
                 <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill"
-                    class="btn btn-primary ml-4">></button>
+                    class="btn btn-primary ml-4">{{fl}}</button>
     </div>
 
     <!--  <br>
