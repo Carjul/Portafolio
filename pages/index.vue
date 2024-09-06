@@ -187,7 +187,13 @@ function nextPageProject() {
     <h1>Proyectos</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div v-for="(project, index) in paginatedProjects" :key="index"
+        { paginatedProjects? <div className="flex w-52 flex-col gap-4">
+  <div className="skeleton h-32 w-full"></div>
+  <div className="skeleton h-4 w-28"></div>
+  <div className="skeleton h-4 w-full"></div>
+  <div className="skeleton h-4 w-full"></div>
+</div>
+    :<div v-for="(project, index) in paginatedProjects" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <a :href="project.url" target="_blank" rel="noopener noreferrer">
                 <figure>
@@ -198,7 +204,7 @@ function nextPageProject() {
                     <p>{{ project.description }}</p>
                 </div>
             </a>
-        </div>
+        </div> }
     </section>
 
     <div class="flex justify-center items-center mt-4">
