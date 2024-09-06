@@ -216,12 +216,7 @@ function nextPageProject() {
     <h1>Conjunto de habilidades</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
-        <div className="flex w-52 flex-col gap-4">
-  <div className="skeleton h-32 w-full"></div>
-  <div className="skeleton h-4 w-28"></div>
-  <div className="skeleton h-4 w-full"></div>
-  <div className="skeleton h-4 w-full"></div>
-</div>
+       
         <div v-for="(skill, index) in paginatedSkills" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <figure className="w-full h-1/3">
@@ -242,12 +237,12 @@ function nextPageProject() {
             &gt;</button>
     </div>
 
-    <!--  <br>
+     <br>
     <h1>CV</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
         <iframe src="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" frameborder="0" width="70%" height="100%"></iframe>
-    </section> -->
+    </section>
     <br>
     <h1>Contáctame</h1>
     <br>
