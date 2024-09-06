@@ -237,12 +237,6 @@ function nextPageProject() {
             &gt;</button>
     </div>
 
-     <br>
-    <h1>CV</h1>
-    <br>
-    <section class="flex mx-auto items-center" >
-        <iframe src="https://drive.google.com/file/d/1X7RZz3ERHzHimW-oDENDpPcSgQxfNQuq/view" frameborder="0" width="70%" height="640px"></iframe>
-    </section>
     <br>
     <h1>Contáctame</h1>
     <br>
