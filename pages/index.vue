@@ -240,8 +240,8 @@ function nextPageProject() {
      <br>
     <h1>CV</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
-        <iframe src="https://drive.google.com/file/d/1epcJ9IIWkNc2SsZCDHgQEZpeRtoYLtuT/view?usp=drivesdk" frameborder="0" width="70%" height="100%"></iframe>
+    <section class="flex mx-auto" >
+        <iframe src="https://drive.google.com/file/d/1X7RZz3ERHzHimW-oDENDpPcSgQxfNQuq/view?usp=drive_link" frameborder="0" width="70%" height="640px"></iframe>
     </section>
     <br>
     <h1>Contáctame</h1>
