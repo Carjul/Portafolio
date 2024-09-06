@@ -216,6 +216,12 @@ function nextPageProject() {
     <h1>Conjunto de habilidades</h1>
     <br>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+        <div className="flex w-52 flex-col gap-4">
+  <div className="skeleton h-32 w-full"></div>
+  <div className="skeleton h-4 w-28"></div>
+  <div className="skeleton h-4 w-full"></div>
+  <div className="skeleton h-4 w-full"></div>
+</div>
         <div v-for="(skill, index) in paginatedSkills" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <figure className="w-full h-1/3">
