@@ -218,7 +218,7 @@ function nextPageProject() {
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
         <div v-for="(skill, index) in paginatedSkills" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <figure>
+            <figure className="w-full h-1/3">
                 <img :src="skill.image" alt="Skill Image" loading="lazy" />
             </figure>
             <div class="card-body">
