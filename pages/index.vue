@@ -32,7 +32,7 @@ const toggleTheme = () => {
     // Guardar la preferencia del tema en el localStorage
     localStorage.setItem('theme', isDarkMode.value ? 'business' : 'garden')
 }
-const openLinks = (url1, url2) => {
+function openLinks(url1, url2){
     if (url1) {
         window.open(url1, '_blank');
     }
