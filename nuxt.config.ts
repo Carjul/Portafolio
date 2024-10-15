@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   modules: ['@sidebase/nuxt-pdf'],
+
   runtimeConfig: {
     public: {
       MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/clima?retryWrites=true&w=majority&appName=Cluster0',
@@ -9,13 +10,16 @@ export default defineNuxtConfig({
       PASSWORD: 'fuaq brxw tvyt oltk'
     }
   },
+
   css: ['~/assets/css/main.css'],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   routeRules: {
     '/': { prerender: true },
     '/api/*': { prerender: true },
@@ -23,6 +27,7 @@ export default defineNuxtConfig({
       redirect: { to: '/new-page', statusCode: 302 }
     }
   },
+
   app: {
     head: {
       title: 'Portafolio Carlos Ramos | Desarrollador Web',
@@ -38,5 +43,7 @@ export default defineNuxtConfig({
         }
       ]
     }
-  }
+  },
+
+  compatibilityDate: '2024-10-15'
 });
