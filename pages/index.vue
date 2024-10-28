@@ -33,13 +33,9 @@ const toggleTheme = () => {
     localStorage.setItem('theme', isDarkMode.value ? 'business' : 'garden')
 }
 function openLinks(url1, url2){
-    if (url1) {
-        window.open(url1, '_blank');
+        window.open(url1) && window.open(url2)
     }
-    if (url2) {
-        window.open(url2, '_blank');
-    }
-}
+
 const getskills = () => getDataWithRetry('/api/skills/read');
 const getprojects = () => getDataWithRetry('/api/projects/read');
 //-----------------------------------------------------------------------------
