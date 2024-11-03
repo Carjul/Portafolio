@@ -111,7 +111,7 @@ function nextPageProject() {
         <section class="flex flex-col">
             <nav class="mt-10 flex items-center">
                 <ul class="flex items-center flex-wrap">
-                    <h1 class="font-burtons text-xl text-base-100">Portafolio Web</h1>
+                    <h1 class="font-burtons text-xl text-base-100 mx-5">Portafolio Web</h1>
                    
                     <li>
                         <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-secondary hover:text-primary"

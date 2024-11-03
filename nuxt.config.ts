@@ -2,10 +2,11 @@ export default defineNuxtConfig({
   modules: ['@sidebase/nuxt-pdf', '@nuxt/image'],
 
   runtimeConfig: {
-    MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/clima?retryWrites=true&w=majority&appName=Cluster0',
+    MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     CLOUDINARY_CLOUD_NAME: 'dn4xdl2v5',
     CLOUDINARY_API_KEY: '357585198847445',
     CLOUDINARY_API_SECRET: 'odYQsXNPvjMByG800ToDDoEajlY',
+    EMAIL: 'emugameplay.tv@gmail.com',
     PASSWORD: 'fuaq brxw tvyt oltk'
 
   },
