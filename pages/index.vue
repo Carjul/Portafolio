@@ -23,18 +23,14 @@ const getDataWithRetry = async (url) => {
     return response ? response.data : [];
 };
 const isDarkMode = ref(false)
-const fl = ref(">")
-const fr = ref("<")
+
 // Función para alternar el tema
 const toggleTheme = () => {
     isDarkMode.value = !isDarkMode.value
     document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'business' : 'garden')
-    // Guardar la preferencia del tema en el localStorage
     localStorage.setItem('theme', isDarkMode.value ? 'business' : 'garden')
 }
-function openLinks(url1, url2){
-        window.open(url1) && window.open(url2)
-    }
+const openLinks= (url1, url2)=> window.open(url1) && window.open(url2)
 
 const getskills = () => getDataWithRetry('/api/skills/read');
 const getprojects = () => getDataWithRetry('/api/projects/read');
@@ -60,25 +56,24 @@ function prevPageskill() {
     }
 }
 function nextPageskill() {
-    console.log(totalPageSkill);
     if (currentPageSkill.value < totalPageSkill.value) {
         currentPageSkill.value++;
     }
 }
-onMounted(() => {
+onMounted( async() => {
+    projects.value = await getprojects();
+
+    skills.value = await getskills();
+    skills.value.reverse();
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
         isDarkMode.value = savedTheme === 'business'
         document.documentElement.setAttribute('data-theme', savedTheme)
     } else {
-        // Tema por defecto
         document.documentElement.setAttribute('data-theme', 'garden')
     }
 })
-onMounted(async () => {
-    skills.value = await getskills();
-    projects.value = await getprojects();
-});
+
 
 //-----------------------------------------------------------------------------
 // Referencias y lógica de paginación para proyectos
@@ -114,13 +109,13 @@ function nextPageProject() {
 
 <template>
     <main
-        class="flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-orange-500 hover:to-yellow-500 hover:via-purple-500">
+    :class="isDarkMode? 'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 to-green-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r':'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r'">
         <section class="flex flex-col">
             <nav class="mt-10 flex items-center">
-                <h1 class="font-burtons text-xl text-neutral-content">Portafolio de</h1>
-                <ul class="flex items-center">
+                <ul class="flex items-center flex-wrap">
+                    <h1 class="font-burtons text-xl text-base-100 text-neutral-content">Portafolio Web</h1>
                     <li>
-                        <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-gradient-to-r hover:from-red-500 hover:to-orange-500"
+                        <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-secondary hover:text-primary"
                             href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
                             Resume
                         </a>
@@ -155,33 +150,41 @@ function nextPageProject() {
                             </svg>
                         </label>
                     </li>
+                    <li class="mx-5">
+                        <a class="text-xl text-base-100 hover:cursor-pointer" href="#proyectos">Proyectos</a>
+                   </li>  
+                   <li class="mx-5">
+                        <a class="text-xl text-base-100 hover:cursor-pointer" href="#skills">Habilidades</a>
+                    </li>  
+                    <li class="mx-5">
+                        <a class="text-xl text-base-100 hover:cursor-pointer" href="#contact">Contacto</a>
+                    </li>
 
                 </ul>
             </nav>
         </section>
         <section class="pb-2 text-neutral-content">
             <div class="flex flex-col items-center text-center p-10 py-10">
-                <h2 class="text-2xl py-2 md:text-3xl text-neutral-content">
-                    Carlos Julian Ramos González
+                <h2 class="text-2xl py-2 text-base-100 md:text-3xl">
+                    Carlos Julián Ramos González
                 </h2>
-                <h3 class="text-2xl py-2 md:text-3xl text-neutral-content">
+                <h3 class="text-2xl py-7 md:text-3xl text-base-100 ">
                     Developer Web
                 </h3>
-                <p class="text-md py-5 leading-8 max-w-xl mx-auto md:text-xl text-neutral-content">
-                </p>
+                
 
                 <div
-                    class="mx-auto rounded-full w-60 h-60 hover:border transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                    <img src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg"
+                    class="mx-auto rounded-full w-60 h-60 hover: transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
+                    <NuxtImg src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg"
                         class="object-cover w-full h-full" />
                 </div>
-                <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-neutral-content">
-                    Soy un desarrollador full-stack con experiencia en tecnologías como Vue.js, Node.js, y bases de
+                <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-base-100 ">
+                    Soy un desarrollador web full-stack con experiencia en tecnologías como React.js, Vue.js, Node.js, Nest.js, Go y bases de
                     datos SQL/NoSQL. Me especializo en crear interfaces intuitivas y escalables, optimizando la
                     experiencia del usuario con un enfoque en diseño responsive y rendimiento web. Lo que me apasiona
                     como desarrollador es la oportunidad de resolver problemas complejos a través de soluciones
-                    creativas y eficientes, mientras aprendo constantemente nuevas herramientas y tecnologías para estar
-                    a la vanguardia del desarrollo web.
+                    creativas y eficientes, si es para realizar trabajos de backend mejor. Mientras aprendo constantemente 
+                    nuevas herramientas y tecnologías para estar a la vanguardia del desarrollo web.
                 </p>
             </div>
         </section>
@@ -189,12 +192,12 @@ function nextPageProject() {
     <br>
     <h1>Proyectos</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4" id="proyectos">
         <div v-for="(project, index) in paginatedProjects" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
             <a href="#" @click.prevent="openLinks(project.url, project.url2)">
             <figure>
-                <img :src="project.image" alt="Project Image" />
+                <NuxtImg :src="project.image" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ project.name }}</h2>
@@ -206,7 +209,7 @@ function nextPageProject() {
 
     <div class="flex justify-center items-center mt-4">
         <button @click="prevPageProject" :disabled="currentPageProject === 1" class="btn btn-primary mr-4">
-            &lt;&lt;
+            &lt;
         </button>
         <span>{{ currentPageProject }} / {{ totalPageProject }}</span>
         <button @click="nextPageProject" :disabled="currentPageProject === totalPageProject"
@@ -218,12 +221,12 @@ function nextPageProject() {
     <br>
     <h1>Conjunto de habilidades</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4" id="skills">
 
         <div v-for="(skill, index) in paginatedSkills" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5">
-            <figure className="w-full h-1/3">
-                <img :src="skill.image" alt="Skill Image" loading="lazy" />
+            <figure>
+                <NuxtImg :src="skill.image" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ skill.title }}</h2>
@@ -234,7 +237,7 @@ function nextPageProject() {
     </section>
     <div class="flex justify-center items-center mt-4">
         <button @click="prevPageskill" :disabled="currentPageSkill === 1" class="btn btn-primary mr-4">
-            &lt;&lt;</button>
+            &lt;</button>
         <span>{{ currentPageSkill }} / {{ totalPageSkill }}</span>
         <button @click="nextPageskill" :disabled="currentPageSkill === totalPageSkill" class="btn btn-primary ml-4">
             &gt;</button>
@@ -243,7 +246,7 @@ function nextPageProject() {
     <br>
     <h1>Contáctame</h1>
     <br>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10" id="contact">
         <ContactForm />
     </section>
 
@@ -253,19 +256,18 @@ function nextPageProject() {
 <style scoped>
 section {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
 figure img {
-    width: 10rem;
+    padding: 5px;
+    width: 50%;
+    height: 90%;
 }
 
-.card {
-    border: solid 0.1px rgba(255, 248, 220, 0.561);
-    padding: 20px 20px 20px 2px;
-}
+
 
 h1 {
     font-size: 30px;

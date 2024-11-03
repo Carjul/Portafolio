@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@sidebase/nuxt-pdf'],
+  modules: ['@sidebase/nuxt-pdf', '@nuxt/image'],
 
   runtimeConfig: {
     MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/clima?retryWrites=true&w=majority&appName=Cluster0',
