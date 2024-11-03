@@ -109,11 +109,11 @@ function nextPageProject() {
 
 <template>
     <main
-    :class="isDarkMode? 'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 to-green-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r':'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out hover:bg-gradient-to-r'">
+    :class="isDarkMode? 'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-green-500 to-blue-500 w-full transition-all duration-300 ease-in-out ':'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out'">
         <section class="flex flex-col">
             <nav class="mt-10 flex items-center">
                 <ul class="flex items-center flex-wrap">
-                    <h1 class="font-burtons text-xl text-base-100 text-neutral-content">Portafolio Web</h1>
+                    <h1 class="font-burtons text-xl text-base-100">Portafolio Web</h1>
                     <li>
                         <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-secondary hover:text-primary"
                             href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
