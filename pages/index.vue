@@ -107,7 +107,7 @@ function nextPageProject() {
 
 <template>
     <main
-        :class="isDarkMode ? 'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 w-full transition-all duration-300 ease-in-out ' : 'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out'">
+        :class="isDarkMode ?  'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out':'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 w-full transition-all duration-300 ease-in-out ' ">
         <section class="flex flex-col">
             <nav class="mt-10 flex items-center">
                 <ul class="flex items-center flex-wrap">
