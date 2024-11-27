@@ -33,6 +33,7 @@ export default defineNuxtConfig({
       title: 'Portafolio Carlos Ramos | Desarrollador Web',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: 'Portafolio de Carlos Ramos, Desarrollador Web, Desarrollo software' },
         { charset: 'utf-8' }
       ],
       link: [
