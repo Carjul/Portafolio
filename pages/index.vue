@@ -1,29 +1,26 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted} from 'vue';
 import axios from 'axios';
 
 
-const getDataWithRetry = async (url) => {
+const getData = async (url) => {
     let response;
-    while (true) {
-        try {
-            response = await axios.get(url);
-            if (response.status !== 500) {
-                break;
-            }
-        } catch (error) {
-            if (error.response && error.response.status !== 500) {
-                break;
-            }
+
+    try {
+        response = await axios.get(url);
+        if (response.status !== 500) {
+            console.log(response)
         }
-        // Espera un segundo antes de intentar de nuevo
-        await new Promise(resolve => setTimeout(resolve, 1000));
+    } catch (error) {
+
+        console.log(error);
     }
+
     return response ? response.data : [];
 };
 
-const getskills = () => getDataWithRetry('/api/skills/read');
-const getprojects = () => getDataWithRetry('/api/projects/read');
+const getskills = () => getData('/api/skills/read');
+const getprojects = () => getData('/api/projects/read');
 
 const skills = ref([]);
 const projects = ref([]);
@@ -39,7 +36,7 @@ const toggleTheme = () => {
 onMounted(async () => {
     projects.value = await getprojects();
     skills.value = await getskills();
-
+    
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
         isDarkMode.value = savedTheme === 'business'
@@ -57,25 +54,26 @@ onMounted(async () => {
     <h1 class="mb-5" id="proyectos">Proyectos</h1>
     <Card :items="projects" />
 
-    <h1 class="mb-5" id="skills" >Conjunto de habilidades</h1>
+    <h1 class="mb-5" id="skills">Conjunto de habilidades</h1>
     <Card :items="skills" />
 
     <h1 class="mb-5" id="contact">Contáctame</h1>
-    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10" >
+    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
         <ContactForm />
     </section>
-    
+
     <Footercomponet />
 
 </template>
 
 <style scoped>
-  section {
+section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
 }
+
 h1 {
     font-size: 30px;
     font-weight: bolder;
