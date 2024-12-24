@@ -61,7 +61,7 @@ function nextPageskill() {
 onMounted(async () => {
     projects.value = await getprojects();
     skills.value = await getskills();
-    skills.value.reverse();
+
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
         isDarkMode.value = savedTheme === 'business'
@@ -201,7 +201,7 @@ function nextPageProject() {
                 <h2 class="card-title">{{ project.name }}</h2>
                 <p>{{ project.description }}</p>
                 <div class="card-actions">
-                    <a v-if="project.cliente" class="link" :href="project.cliente" target="_blank">Cliente </a>
+                    <a v-if="project.cliente" class="link" :href="project.cliente" target="_blank">Website</a>
                     <a v-if="project.api !== ''" class="link" :href="project.api" target="_blank">API </a>
                     <a v-if="project.repositorio" class="link" :href="project.repositorio" target="_blank">Repositorio </a>
                 </div>
@@ -231,7 +231,7 @@ function nextPageProject() {
                 <NuxtImg :src="skill.image" loading="lazy" />
             </figure>
             <div class="card-body">
-                <h2 class="card-title">{{ skill.title }}</h2>
+                <h2 class="card-title">{{ skill.name }}</h2>
                 <p>{{ skill.description }}</p>
             </div>
         </div>

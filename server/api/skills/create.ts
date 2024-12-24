@@ -2,7 +2,7 @@ import { defineEventHandler, readBody } from 'h3';
 import { connect, getDatabase, getCollection } from '../../utils/mongodb';
 
 interface SkillRequestBody {
-  title: string;
+  name: string;
   image: string;
   description: string;
 }
