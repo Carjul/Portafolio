@@ -106,12 +106,12 @@ function nextPageProject() {
 
 <template>
     <main
-        :class="isDarkMode ?  'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out':'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 w-full transition-all duration-300 ease-in-out ' ">
+        :class="isDarkMode ? 'flex flex-col items-center bg-gradient-to-r from-blue-500 to-green-500 to-pink-500 w-full transition-all duration-300 ease-in-out' : 'flex flex-col items-center bg-gradient-to-r from-yellow-500 to-blue-500 w-full transition-all duration-300 ease-in-out '">
         <section class="flex flex-col">
             <nav class="mt-10 flex items-center">
                 <ul class="flex items-center flex-wrap">
                     <h1 class="font-burtons text-xl text-base-100 mx-5">Portafolio Web</h1>
-                   
+
                     <li>
                         <a class="bg-primary from-cyan-500 text-to-teal-500 text-white px-2 py-2 border-none rounded-md ml-8 transition-all duration-300 ease-in-out hover:bg-secondary hover:text-primary"
                             href="https://www.linkedin.com/in/carlos-juli%C3%A1n-ramos/" target="_blank">
@@ -120,13 +120,16 @@ function nextPageProject() {
                     </li>
 
                     <li class="mx-5">
-                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary" href="#proyectos">Proyectos</a>
+                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary"
+                            href="#proyectos">Proyectos</a>
                     </li>
                     <li class="mx-5">
-                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary" href="#skills">Habilidades</a>
+                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary"
+                            href="#skills">Habilidades</a>
                     </li>
                     <li class="mx-5">
-                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary" href="#contact">Contacto</a>
+                        <a class="text-xl text-base-100 hover:cursor-pointer hover:text-primary"
+                            href="#contact">Contacto</a>
                     </li>
                     <li>
                         <label class="swap swap-rotate">
@@ -155,7 +158,7 @@ function nextPageProject() {
                             </svg>
                         </a>
                     </li>
-                    
+
                 </ul>
             </nav>
         </section>
@@ -171,8 +174,8 @@ function nextPageProject() {
 
                 <div
                     class="mx-auto rounded-full w-60 h-60 hover: transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                    <NuxtImg src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg" loading="lazy"
-                        class="object-cover w-full h-full" />
+                    <NuxtImg src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg"
+                        loading="lazy" class="object-cover w-full h-full" />
                 </div>
                 <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-base-100 ">
                     Soy un desarrollador web full-stack con experiencia en tecnologías como React.js, Vue.js, Node.js,
@@ -192,19 +195,20 @@ function nextPageProject() {
         <div v-for="(project, index) in paginatedProjects" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5 hover:bg-base-300">
             <figure>
-                <NuxtImg :src="project.image" loading="lazy"/>
+                <NuxtImg :src="project.image" loading="lazy" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ project.name }}</h2>
                 <p>{{ project.description }}</p>
-            </div>
-            <div class="card-actions">
-                <a v-if="project.url" class="link" :href="project.url" target="_blank">Ver proyecto </a>
-                <a v-if="project.url2" class="link" :href="project.url2" target="_blank">Ver codigo </a>
+                <div class="card-actions">
+                    <a v-if="project.url" class="link" :href="project.url" target="_blank">Ver proyecto </a>
+                    <a v-if="project.url2" class="link" :href="project.url2" target="_blank">Ver codigo </a>
+                </div>
             </div>
 
 
-            
+
+
         </div>
     </section>
 
@@ -268,10 +272,12 @@ figure img {
     height: 90%;
 }
 
-p{
+p {
     font-family: 'Roboto', sans-serif;
 }
-
+a:hover {
+    color: #ff0000;
+}
 h1 {
     font-size: 30px;
     font-weight: bolder;
