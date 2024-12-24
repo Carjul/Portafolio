@@ -8,8 +8,8 @@ export default defineEventHandler(async (event) => {
   const collection = await getCollection(db, 'skills');
 
   try {
-    if (event.req.method === 'DELETE') {
-      const { _id } = await readBody(event);
+    if (event.method === 'DELETE') {
+      const { _id } = await readBody(event) as { _id: string };
       const result = await collection.deleteOne({ _id: new ObjectId(_id) });
       if (result.deletedCount === 0) {
         throw createError({

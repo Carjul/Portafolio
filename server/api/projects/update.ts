@@ -2,7 +2,14 @@ import { defineEventHandler, readBody, createError } from 'h3';
 import { connect, getDatabase, getCollection } from '../../utils/mongodb';
 import { ObjectId } from 'mongodb';
 
-
+interface ProjectRequestBody {
+  _id: string;
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  url2: string;
+}
 export default defineEventHandler(async (event) => {
   const client = await connect();
   const db = await getDatabase(client);
@@ -10,8 +17,8 @@ export default defineEventHandler(async (event) => {
 
   try {
    
-    if (event.req.method === 'PUT') {
-      const body = await readBody(event);
+    if (event.method === 'PUT') {
+      const body = await readBody<ProjectRequestBody>(event);
       const { _id, ...updateData } = body;
       const result = await collection.updateOne({ _id: new ObjectId(_id) }, { $set: updateData });
       if (result.matchedCount === 0) {
@@ -22,9 +29,6 @@ export default defineEventHandler(async (event) => {
       }
       return { message: 'Update successful' };
     }
-
-  
-
     throw createError({
       statusCode: 405,
       statusMessage: 'Method Not Allowed',

@@ -28,7 +28,7 @@ const toggleTheme = () => {
     document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'business' : 'garden')
     localStorage.setItem('theme', isDarkMode.value ? 'business' : 'garden')
 }
-const openLinks = (url1, url2) => window.open(url1) && window.open(url2)
+
 
 const getskills = () => getDataWithRetry('/api/skills/read');
 const getprojects = () => getDataWithRetry('/api/projects/read');
@@ -60,7 +60,6 @@ function nextPageskill() {
 }
 onMounted(async () => {
     projects.value = await getprojects();
-
     skills.value = await getskills();
     skills.value.reverse();
     const savedTheme = localStorage.getItem('theme')
@@ -172,7 +171,7 @@ function nextPageProject() {
 
                 <div
                     class="mx-auto rounded-full w-60 h-60 hover: transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                    <NuxtImg src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg"
+                    <NuxtImg src="https://res.cloudinary.com/dim2wnoej/image/upload/v1723646127/7_josy58.jpg" loading="lazy"
                         class="object-cover w-full h-full" />
                 </div>
                 <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-base-100 ">
@@ -192,15 +191,20 @@ function nextPageProject() {
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4" id="proyectos">
         <div v-for="(project, index) in paginatedProjects" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5 hover:bg-base-300">
-            <a href="#" @click.prevent="openLinks(project.url, project.url2)">
-                <figure>
-                    <NuxtImg :src="project.image" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">{{ project.name }}</h2>
-                    <p>{{ project.description }}</p>
-                </div>
-            </a>
+            <figure>
+                <NuxtImg :src="project.image" loading="lazy"/>
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title">{{ project.name }}</h2>
+                <p>{{ project.description }}</p>
+            </div>
+            <div class="card-actions">
+                <a v-if="project.url" class="link" :href="project.url" target="_blank">Ver proyecto </a>
+                <a v-if="project.url2" class="link" :href="project.url2" target="_blank">Ver codigo </a>
+            </div>
+
+
+            
         </div>
     </section>
 
@@ -223,7 +227,7 @@ function nextPageProject() {
         <div v-for="(skill, index) in paginatedSkills" :key="index"
             class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5 hover:bg-base-300">
             <figure>
-                <NuxtImg :src="skill.image" />
+                <NuxtImg :src="skill.image" loading="lazy" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ skill.title }}</h2>

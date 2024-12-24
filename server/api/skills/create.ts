@@ -16,15 +16,17 @@ export default defineEventHandler(async (event) => {
     try {
       const data = await readBody<SkillRequestBody>(event);
       const result = await collection.insertOne(data);
-      event.res.statusCode = 201; 
       return { message: 'Create successful', result };
     } catch (error) {
-      console.error(error);
-      event.res.statusCode = 500; 
-      return { message: 'Internal Server Error', error };
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+      });
     }
   } else {
-    event.res.statusCode = 405; 
-    return { message: 'Method Not Allowed' };
+    throw createError({
+      statusCode: 405,
+      statusMessage: 'Method Not Allowed',
+    });
   }
 });
