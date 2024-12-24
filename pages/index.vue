@@ -201,14 +201,11 @@ function nextPageProject() {
                 <h2 class="card-title">{{ project.name }}</h2>
                 <p>{{ project.description }}</p>
                 <div class="card-actions">
-                    <a v-if="project.url" class="link" :href="project.url" target="_blank">Ver proyecto </a>
-                    <a v-if="project.url2" class="link" :href="project.url2" target="_blank">Ver codigo </a>
+                    <a v-if="project.cliente" class="link" :href="project.cliente" target="_blank">Cliente </a>
+                    <a v-if="project.api !== ''" class="link" :href="project.api" target="_blank">API </a>
+                    <a v-if="project.repositorio" class="link" :href="project.repositorio" target="_blank">Repositorio </a>
                 </div>
             </div>
-
-
-
-
         </div>
     </section>
 
@@ -267,8 +264,8 @@ section {
 }
 
 figure img {
-    padding: 5px;
-    width: 50%;
+    padding: 1px;
+    width: 60%;
     height: 90%;
 }
 

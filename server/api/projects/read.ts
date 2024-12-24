@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   try {
     if (event.method === 'GET') {
       const skills = await collection.find({}).toArray();
-      return skills;
+      return skills.reverse();
     }
 
 

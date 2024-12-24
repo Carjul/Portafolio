@@ -5,8 +5,9 @@ interface ProjectRequestBody {
   name: string;
   description: string;
   image: string;
-  url: string;
-  url2: string;
+  cliente: string;
+  api: string;
+  repositorio: string;
 }
 
 export default defineEventHandler(async (event) => {
