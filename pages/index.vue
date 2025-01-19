@@ -1,22 +1,20 @@
 <script setup>
-import { ref, onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 
 const getData = async (url) => {
-    let response;
-
     try {
-        response = await axios.get(url);
+        let response = await axios.get(url);
         if (response.status !== 500) {
-            console.log(response)
+            return response.data
+        } else {
+            return []
         }
     } catch (error) {
-
         console.log(error);
     }
 
-    return response ? response.data : [];
 };
 
 const getskills = () => getData('/api/skills/read');
@@ -36,7 +34,7 @@ const toggleTheme = () => {
 onMounted(async () => {
     projects.value = await getprojects();
     skills.value = await getskills();
-    
+
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
         isDarkMode.value = savedTheme === 'business'
