@@ -81,8 +81,7 @@ defineProps({
 
                 <div
                     class="mx-auto rounded-full w-60 h-60 hover: transition-transform transform hover:scale-110 duration-500 ease-in-out mx-auto overflow-hidden mt-39 md:h-96 md:w-96">
-                    <NuxtImg src="/img/profile.jpg"
-                        loading="lazy" class="object-cover w-full h-full" />
+                    <NuxtImg src="/img/profile.jpg" class="object-cover w-full h-full" />
                 </div>
                 <p class="text-md py-5 leading-8 max-w-x mx-auto md:text-xl text-base-100 ">
                     Soy un desarrollador web full-stack con experiencia en tecnologías como React.js, Vue.js, Node.js,

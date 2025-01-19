@@ -1,15 +1,15 @@
+import { env } from 'process';
+
 export default defineNuxtConfig({
   modules: [ '@nuxt/image'],
 
   runtimeConfig: {
-    MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    //MONGODB_URI:'mongodb://localhost:27017/',
-    CLOUDINARY_CLOUD_NAME: 'dn4xdl2v5',
-    CLOUDINARY_API_KEY: '357585198847445',
-    CLOUDINARY_API_SECRET: 'odYQsXNPvjMByG800ToDDoEajlY',
-    EMAIL: 'emugameplay.tv@gmail.com',
-    PASSWORD: 'fuaq brxw tvyt oltk'
-
+    MONGODB_URI: env.MONGODB_URI ,
+    CLOUDINARY_CLOUD_NAME: env.CLOUDINARY_CLOUD_NAME,
+    CLOUDINARY_API_KEY: env.CLOUDINARY_API_KEY,
+    CLOUDINARY_API_SECRET: env.CLOUDINARY_API_SECRET,
+    EMAIL: env.EMAIL,
+    PASSWORD: env.PASSWORD
   },
 
   css: ['~/assets/css/main.css'],
@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/api/*': { prerender: true },
+    '/img/*': { prerender: true },
     '/page': {
       redirect: { to: '/new-page', statusCode: 302 }
     }

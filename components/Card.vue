@@ -2,7 +2,7 @@
    <section class="mx-auto ml-5 mr-5 bg-base-200 px-4" >
         <div v-for="(item, index) in paginatedItems" :key="index" class="card card-compact w-96 bg-base-100 shadow-xl mt-5 mb-5 hover:bg-base-300">
             <figure>
-                <NuxtImg :src="item.image" loading="lazy" />
+                <NuxtImg :src="item.image" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ item.name }}</h2>
