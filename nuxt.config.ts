@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@sidebase/nuxt-pdf', '@nuxt/image'],
+  modules: [ '@nuxt/image'],
 
   runtimeConfig: {
     MONGODB_URI: 'mongodb+srv://admin:12345@cluster0.losq7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
@@ -41,7 +41,7 @@ export default defineNuxtConfig({
         {
           rel: 'icon',
           type: 'image/x-icon',
-          href: 'https://res.cloudinary.com/dim2wnoej/image/upload/v1723819201/jcz4dpbwxx4zjaqm0tos.ico'
+          href: '/img/portafolio.ico'
         }
       ]
     }

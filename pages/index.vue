@@ -55,6 +55,13 @@ onMounted(async () => {
     <h1 class="mb-5" id="skills">Conjunto de habilidades</h1>
     <Card :items="skills" />
 
+    <h1 class="mb-5" id="contact">CV</h1>
+    <div class="bg-base-200  rounded-lg shadow-lg p-6 mb-10 h-auto">
+        <div class="space-y-2 flex items-center">
+            <iframe src="/docs/CV_CARLOS_RAMOS.pdf" height='400px' width='100%'></iframe>
+        </div>
+    </div>
+
     <h1 class="mb-5" id="contact">Contáctame</h1>
     <section class="mx-auto ml-5 mr-5 bg-base-200 px-4 mb-10">
         <ContactForm />
